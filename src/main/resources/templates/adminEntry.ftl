@@ -15,20 +15,22 @@
     <!-- Font Awesome -->
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/solid.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/fontawesome.js"></script>
+
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-<div style="display: flex; width: 100%; align-item: stretch;">
+<div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar">
-        <div>
+        <div class="sidebar-header">
             <h3>Personal Blog</h3>
         </div>
 
-        <ul>
-            <li>
-                <a href="#" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul>
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
                         <a href="#">Link 1</a>
                     </li>

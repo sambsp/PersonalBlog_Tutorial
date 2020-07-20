@@ -50,14 +50,20 @@ a:focus {
 }
 
 #sidebar {
+    /* 最小宽度：250像素 */
     min-width: 250px;
+    /* 最大宽度：250像素 */
     max-width: 250px;
+    /* 背景色：淡蓝 */
     background: #7386D5;
+    /* 文字颜色：白色 */
     color: #fff;
+    /* 效果，我们这里是关闭侧边栏的时候，会让侧边栏改变位置，从原位置到新的位置，转换时间一共0.3秒 */
     transition: all 0.3s;
 }
 
 #sidebar.active {
+    /* 侧边栏带上active属性的时候，元素的左侧边框-250像素 */
     margin-left: -250px;
 }
 
@@ -87,21 +93,28 @@ a:focus {
     background: #fff;
 }
 
+/* sidebar中，<ul>下面的<li>（ListItem），当含有active状态时，直系的<a>元素， 和<a>元素的属性符合aria-expanded="true"这个条件的，都使用的style*/
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
 }
 
+/* <a>元素属性符合 data-toggle="collapse" */
 a[data-toggle="collapse"] {
     position: relative;
 }
 
+/* 使用dropdown-toggle类的元素结束前插入该style，实际效果是下拉三角靠右和Home分开 */
 .dropdown-toggle::after {
     display: block;
+    /* 使用绝对位置 */
     position: absolute;
+    /* 在父容器的垂直位置一半处开始渲染*/
     top: 50%;
+    /* 离开父容器的右侧20像素距离 */
     right: 20px;
+
     transform: translateY(-50%);
 }
 
@@ -141,13 +154,19 @@ a.article:hover {
     transition: all 0.3s;
 }
 
+/* 根据能显示的区域宽度调整侧边栏的一些细节：当显示区域小于等于768像素时，相应的栏位使用下面的策略 */
 @media (max-width: 768px) {
+    /* 当显示区域小于等于768像素时，不带active就隐藏 */
     #sidebar {
         margin-left: -250px;
     }
+
+    /* 当显示区域小于等于768像素时，带active就直接显示 */
     #sidebar.active {
         margin-left: 0;
     }
+
+    /* 当显示区域小于等于768像素时，开关按钮中的字隐藏 */
     #sidebarCollapse span {
         display: none;
     }

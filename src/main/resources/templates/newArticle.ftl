@@ -34,14 +34,57 @@
                 </ul>
             </nav>
 
-            <section class="newarticlesetion">
-                <div class="card">
-                    <h3>文章标题</h3>
+            <section style="padding: 5px">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4>新的文章</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>题目</label>
+                            <input type="text" id="article-title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>文章内容</label>
+                            <div id="article-editor"></div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <label>分类</label>
+                                <select id="catlog-selection" class="form-control custom-select" onchange="">
+                                    <option selected="" disabled="">选择类型</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                    <option>stub</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-secondary" onclick="">保存</button>
+                                <button class="btn btn-success" onclick="">发布</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </div>
 </body>
+
+<script src="3rdParty/ckeditor/ckeditor.js"></script>
+<script src="javascript/newarticle.js"></script>
 
 <script type="text/javascript">
     function toggleSidebar() {

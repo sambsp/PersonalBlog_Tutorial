@@ -26,27 +26,27 @@
 
         <!-- Content -->
         <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                </div>
+            <nav class="navbar navbar-expand navbar-white navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="javascript:toggleSidebar()" href="#"><i class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
             </nav>
-            <p>hello world</p>
+
+            <section class="newarticlesetion">
+                <div class="card">
+                    <h3>文章标题</h3>
+                </div>
+            </section>
         </div>
     </div>
-
-    <script type="text/javascript">
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
-    </script>
-
 </body>
+
+<script type="text/javascript">
+    function toggleSidebar() {
+        $('#sidebar').toggleClass('active');
+    }
+</script>
 
 </html>

@@ -17,6 +17,12 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/fontawesome.js"></script>
 
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 400px;
+        }
+    </style>
 </head>
 
 <body>

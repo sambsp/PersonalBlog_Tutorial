@@ -78,7 +78,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-secondary" onclick="">保存</button>
+                                <button class="btn btn-secondary" onclick="saveArticle()">保存</button>
                                 <button class="btn btn-success" onclick="">发布</button>
                             </div>
                         </div>

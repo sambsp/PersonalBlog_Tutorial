@@ -69,17 +69,20 @@ function saveArticle() {
         return;
     }
 
+    var data = {'title': title, 'content': content, 'catalog': catalog};
+
     $.ajax({
         type: 'post',
         async: true,
-        data: {'title': title, 'content': content, 'catalog': catalog},
+        data: JSON.stringify(data),
         url: document.location.origin + '/api/savearticle',
-        dataType:'text',
+        dataType:'json',
+        contentType: "application/json; charset=utf-8",
         success: function(data) {
             console.log("保存成功");
         },
-        error: function () {
-            console.log("Ajax 发生错误！");
+        error: function (xhr) {
+            console.log("Ajax 发生错误: " + xhr.responseText);
         }
     });
 }

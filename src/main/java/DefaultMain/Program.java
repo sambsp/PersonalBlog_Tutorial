@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"API", "DefaultMain"})
+@ComponentScan({"API", "Exception", "DefaultMain"})
 public class Program  {
     public static void main(String[] args) {
         DatabaseMan.Instance().Init();

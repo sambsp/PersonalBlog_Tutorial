@@ -9,8 +9,6 @@ public class Article {
     private String content;
     @NotBlank(message = "catalog cannot be empty")
     private String catalog;
-    @NotBlank(message = "test cannot be empty")
-    private String test;
 
     public String getTitle() {
         return title;
@@ -34,13 +32,5 @@ public class Article {
 
     public void setCatalog(String catalog) {
         this.catalog = catalog;
-    }
-
-    public String getTest() {
-        return test;
-    }
-
-    public void setTest(String test) {
-        this.test = test;
     }
 }

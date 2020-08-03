@@ -1,4 +1,4 @@
-package Exception;
+package DefaultMain.Exception;
 
 import java.util.List;
 

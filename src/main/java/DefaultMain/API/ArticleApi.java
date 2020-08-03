@@ -1,7 +1,7 @@
-package API;
+package DefaultMain.API;
 
-import DefaultMain.Database.ArticleRepository;
-import Model.Article;
+import DefaultMain.Model.Article;
+import DefaultMain.Service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,22 +15,22 @@ import java.net.URI;
 @RestController
 public class ArticleApi {
     @Autowired
-    private ArticleRepository articleRepository;
+    private ArticleService articleService;
 
     @PostMapping("/api/savearticle")
     public ResponseEntity<?> saveArticle(@Valid @RequestBody Article article) {
-        Article dbArticle = articleRepository.save(article);
-        if (dbArticle == null) {
+        Article archive = articleService.create(article);
+        if (archive == null) {
             return ResponseEntity.badRequest().build();
         }
         else {
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{id}")
-                    .buildAndExpand(dbArticle.getTitle())
+                    .buildAndExpand(archive.getTitle())
                     .toUri();
 
             return ResponseEntity.created(uri)
-                    .body(dbArticle);
+                    .body(archive);
         }
     }
 }

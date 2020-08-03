@@ -1,4 +1,4 @@
-package Model;
+package DefaultMain.Model;
 
 import javax.validation.constraints.NotBlank;
 

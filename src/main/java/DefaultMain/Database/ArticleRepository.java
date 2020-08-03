@@ -1,6 +1,6 @@
 package DefaultMain.Database;
 
-import Model.Article;
+import DefaultMain.Model.Article;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

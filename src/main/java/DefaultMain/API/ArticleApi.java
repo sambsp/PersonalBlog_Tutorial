@@ -19,7 +19,17 @@ public class ArticleApi {
 
     @PostMapping("/api/savearticle")
     public ResponseEntity<?> saveArticle(@Valid @RequestBody Article article) {
-        Article archive = articleService.create(article);
+        Article archive;
+
+        if (article.getId().isEmpty()) {
+            //MongoRepository的API决定了，只有id是null的时候，才会返回给数据库的id给我们
+            article.setId(null);
+            archive = articleService.create(article);
+        }
+        else {
+            archive = articleService.update(article);
+        }
+
         if (archive == null) {
             return ResponseEntity.badRequest().build();
         }

@@ -53,6 +53,7 @@ function saveArticle() {
     var title = $('#article-title').val();
     var catalog = $("#catlog-selection").val();
     var content = window.editor.getData();
+    var id = $('#article-id').attr('value').trim();
 
     if (title == null || title.trim() == '') {
         console.log("题目不能是空的");
@@ -69,7 +70,7 @@ function saveArticle() {
         return;
     }
 
-    var data = {'title': title, 'content': content, 'catalog': catalog};
+    var data = {'title': title, 'content': content, 'catalog': catalog, 'id': id}
 
     $.ajax({
         type: 'post',
@@ -80,6 +81,9 @@ function saveArticle() {
         contentType: "application/json; charset=utf-8",
         success: function(data) {
             console.log("保存成功");
+            if (id == "") {
+                $('#article-id').attr('value', data.id);
+            }
         },
         error: function (xhr) {
             console.log("Ajax 发生错误: " + xhr.responseText);

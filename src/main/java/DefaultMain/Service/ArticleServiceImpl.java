@@ -23,8 +23,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void update(String id, Article article) {
-
+    public Article update(Article article) {
+        return articleRepository.save(article);
     }
 
     @Override

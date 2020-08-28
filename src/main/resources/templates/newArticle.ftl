@@ -43,7 +43,7 @@
             <section style="padding: 5px">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h4>新的文章</h4>
+                        <h4>新的文章<span id="article-id" value=""></span></h4>
                     </div>
                     <div class="card-body">
                         <div class="form-group">

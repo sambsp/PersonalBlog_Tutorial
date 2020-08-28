@@ -7,6 +7,6 @@ import java.util.Collection;
 public interface ArticleService {
     public abstract Article create(Article article);
     public abstract Collection<Article> read();
-    public abstract void update(String id, Article article);
+    public abstract Article update(Article article);
     public abstract void delete(String id);
 }

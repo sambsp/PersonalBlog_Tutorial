@@ -1,8 +1,13 @@
 package DefaultMain.Model;
 
+import org.springframework.data.annotation.Id;
+
 import javax.validation.constraints.NotBlank;
 
 public class Article {
+    @Id
+    private String id;
+
     @NotBlank(message = "title cannot be empty")
     private String title;
     @NotBlank(message = "content cannot be empty")
@@ -32,5 +37,13 @@ public class Article {
 
     public void setCatalog(String catalog) {
         this.catalog = catalog;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

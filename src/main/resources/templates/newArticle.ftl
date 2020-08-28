@@ -32,13 +32,7 @@
 
         <!-- Content -->
         <div id="content">
-            <nav class="navbar navbar-expand navbar-white navbar-light">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="javascript:toggleSidebar()" href="#"><i class="fas fa-bars"></i></a>
-                    </li>
-                </ul>
-            </nav>
+            <#include "./sidebartoggle.ftl">
 
             <section style="padding: 5px">
                 <div class="card card-primary">
@@ -91,12 +85,7 @@
 
 <script src="3rdParty/ckeditor/ckeditor.js"></script>
 <script src="3rdParty/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="javascript/sidebartoggle.js"></script>
 <script src="javascript/newarticle.js"></script>
-
-<script type="text/javascript">
-    function toggleSidebar() {
-        $('#sidebar').toggleClass('active');
-    }
-</script>
 
 </html>

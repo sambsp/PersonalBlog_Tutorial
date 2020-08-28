@@ -14,7 +14,7 @@
                     <a href="/newarticle">写文章</a>
                 </li>
                 <li>
-                    <a href="#">分类目录</a>
+                    <a href="/catalog">分类目录</a>
                 </li>
                 <li>
                     <a href="#">标签</a>

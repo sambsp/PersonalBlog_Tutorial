@@ -49,6 +49,15 @@ ClassicEditor.create( document.querySelector( '#article-editor' ), {
 				console.error( error );
 			} );
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'center',
+    background: '#ffc107',
+    showConfirmButton: false,
+    backdrop: false,
+    timer: 3000
+});
+
 function saveArticle() {
     var title = $('#article-title').val();
     var catalog = $("#catlog-selection").val();
@@ -80,13 +89,20 @@ function saveArticle() {
         dataType:'json',
         contentType: "application/json; charset=utf-8",
         success: function(data) {
-            console.log("保存成功");
+            Toast.fire({
+            	type: 'success',
+            	title: '保存成功'
+            });
+
             if (id == "") {
                 $('#article-id').attr('value', data.id);
             }
         },
         error: function (xhr) {
-            console.log("Ajax 发生错误: " + xhr.responseText);
+            Toast.fire({
+                type: 'error',
+                title: "Ajax 发生错误: " + xhr.responseText
+            });
         }
     });
 }

@@ -90,6 +90,7 @@
 </body>
 
 <script src="3rdParty/ckeditor/ckeditor.js"></script>
+<script src="3rdParty/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="javascript/newarticle.js"></script>
 
 <script type="text/javascript">

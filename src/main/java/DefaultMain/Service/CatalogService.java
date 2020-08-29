@@ -9,4 +9,5 @@ public interface CatalogService {
     public abstract Collection<Catalog> read();
     public abstract Catalog update(Catalog catalog);
     public abstract void delete(String id);
+    public abstract boolean exists(Catalog catalog);
 }

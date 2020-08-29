@@ -6,7 +6,7 @@ $('#catalog-input').on('keyup', function(e) {
     if (e.keyCode == 13) {
         var catalog = $('#catalog-input').val().trim();
 
-        var data = {'catalog': catalog}
+        var data = {'name': catalog}
 
         if (catalog != '') {
             $.ajax({

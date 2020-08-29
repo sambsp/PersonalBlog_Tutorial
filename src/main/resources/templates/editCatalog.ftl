@@ -17,7 +17,6 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/fontawesome.js"></script>
 
     <link href="css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -37,6 +36,20 @@
                 <div class="card-body">
                     <button class="btn btn-primary mb-2" onclick="onAddCatalog();">新增栏目</button>
                     <input id="catalog-input" class="form-control col-4 mt-2" placeholder="输入内容后回车确认即可" hidden>
+
+                    <table id="catalog-table-container" class="table table-bordered table-striped table-hover mt-2">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>创建时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="catalog-table-body">
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
                 </div>
                 <div class="card-footer">
 

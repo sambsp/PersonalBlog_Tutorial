@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 
 @RestController
@@ -32,5 +33,14 @@ public class CatalogApi {
             catalog = catalogService.create(catalog);
         }
         return ResponseEntity.created(uri).body(catalog);
+    }
+
+    @PostMapping("/api/getcatalog")
+    public ResponseEntity<?> getCatalog() {
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+
+        Collection<Catalog> catalogList = catalogService.read();
+
+        return ResponseEntity.created(uri).body(catalogList);
     }
 }

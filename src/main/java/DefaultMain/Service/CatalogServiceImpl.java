@@ -24,7 +24,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     public Collection<Catalog> read() {
-        return null;
+        return catalogRepository.findAll();
     }
 
     @Override

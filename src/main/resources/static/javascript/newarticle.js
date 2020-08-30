@@ -79,7 +79,7 @@ function saveArticle() {
         return;
     }
 
-    var data = {'title': title, 'content': content, 'catalog': catalog, 'id': id}
+    var data = {'title': title, 'content': content, 'catalog': { 'id': catalog }, 'id': id}
 
     $.ajax({
         type: 'post',
@@ -106,3 +106,32 @@ function saveArticle() {
         }
     });
 }
+
+$(document).ready(function() {
+    var data = {};
+
+    $.ajax({
+        type: 'post',
+        async: true,
+        data: JSON.stringify(data),
+        url: document.location.origin + '/api/getcatalog',
+        dataType:'json',
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            if(data && data.length) {
+                var root = $('#catlog-selection');
+                for (var i = 0; i < data.length; ++i) {
+                    var c = data[i];
+                    var s = '<option value="' + c.id + '">' + c.name + '</option>';
+                    root.append(s);
+                }
+            }
+        },
+        error: function (xhr) {
+            Toast.fire({
+                type: 'error',
+                title: "Ajax 发生错误: " + xhr.responseText
+            });
+        }
+    });
+});

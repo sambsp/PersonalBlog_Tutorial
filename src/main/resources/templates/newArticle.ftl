@@ -53,18 +53,6 @@
                                 <label>分类</label>
                                 <select id="catlog-selection" class="form-control custom-select" onchange="">
                                     <option selected="" disabled="">选择类型</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
-                                    <option>stub</option>
                                 </select>
                             </div>
                         </div>

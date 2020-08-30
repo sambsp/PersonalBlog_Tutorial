@@ -1,6 +1,7 @@
 package DefaultMain.Model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import javax.validation.constraints.NotBlank;
 
@@ -12,8 +13,8 @@ public class Article {
     private String title;
     @NotBlank(message = "content cannot be empty")
     private String content;
-    @NotBlank(message = "catalog cannot be empty")
-    private String catalog;
+    @DBRef
+    private Catalog catalog;
 
     public String getTitle() {
         return title;
@@ -31,11 +32,11 @@ public class Article {
         this.content = content;
     }
 
-    public String getCatalog() {
+    public Catalog getCatalog() {
         return catalog;
     }
 
-    public void setCatalog(String catalog) {
+    public void setCatalog(Catalog catalog) {
         this.catalog = catalog;
     }
 

@@ -17,6 +17,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/fontawesome.js"></script>
 
     <link href="css/style.css" rel="stylesheet">
+    <link href="3rdParty/datatable/datatables.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,6 +62,7 @@
 </body>
 
 <script src="3rdParty/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="3rdParty/datatable/datatables.min.js"></script>
 <script src="javascript/sidebartoggle.js"></script>
 <script src="javascript/catalog.js"></script>
 

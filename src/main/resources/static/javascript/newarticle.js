@@ -49,15 +49,6 @@ ClassicEditor.create( document.querySelector( '#article-editor' ), {
 				console.error( error );
 			} );
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'center',
-    background: '#ffc107',
-    showConfirmButton: false,
-    backdrop: false,
-    timer: 3000
-});
-
 function saveArticle() {
     var title = $('#article-title').val();
     var catalog = $("#catlog-selection").val();
@@ -92,16 +83,9 @@ function saveArticle() {
         tags.push(tag);
     }
 
-    var data = {'title': title, 'content': content, 'catalog': { 'id': catalog }, 'tagList': tags, 'id': id}
-
-    $.ajax({
-        type: 'post',
-        async: true,
-        data: JSON.stringify(data),
-        url: document.location.origin + '/api/savearticle',
-        dataType:'json',
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
+    var data = {'title': title, 'content': content, 'catalog': { 'id': catalog }, 'tagList': tags, 'id': id};
+    var url = document.location.origin + '/api/savearticle';
+    netPostJson(url, data, function(data) {
             Toast.fire({
             	type: 'success',
             	title: '保存成功'
@@ -110,27 +94,19 @@ function saveArticle() {
             if (id == "") {
                 $('#article-id').attr('value', data.id);
             }
-        },
-        error: function (xhr) {
+        }, function(xhr) {
             Toast.fire({
                 type: 'error',
                 title: "Ajax 发生错误: " + xhr.responseText
             });
-        }
-    });
+        });
 }
 
 $(document).ready(function() {
     var data = {};
+    var url = document.location.origin + '/api/getcatalog';
 
-    $.ajax({
-        type: 'post',
-        async: true,
-        data: JSON.stringify(data),
-        url: document.location.origin + '/api/getcatalog',
-        dataType:'json',
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
+    netPostJson(url, data, function(data) {
             if(data && data.length) {
                 var root = $('#catlog-selection');
                 for (var i = 0; i < data.length; ++i) {
@@ -139,14 +115,12 @@ $(document).ready(function() {
                     root.append(s);
                 }
             }
-        },
-        error: function (xhr) {
+        }, function (xhr) {
             Toast.fire({
                 type: 'error',
                 title: "Ajax 发生错误: " + xhr.responseText
             });
-        }
-    });
+        });
 
     var tokenAutocomplete = new TokenAutocomplete({
         name: 'tags-container',

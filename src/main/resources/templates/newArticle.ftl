@@ -90,6 +90,8 @@
 <script src="3rdParty/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="3rdParty/tokenautocomplete/token-autocomplete.js"></script>
 <script src="javascript/sidebartoggle.js"></script>
+<script src="javascript/toast.js"></script>
+<script src="javascript/netutil.js"></script>
 <script src="javascript/newarticle.js"></script>
 
 </html>

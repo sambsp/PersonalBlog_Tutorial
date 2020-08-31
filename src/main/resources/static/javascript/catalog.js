@@ -7,64 +7,54 @@ $('#catalog-input').on('keyup', function(e) {
         var catalog = $('#catalog-input').val().trim();
 
         var data = {'name': catalog}
-
+        var url = document.location.origin + '/api/addcatalog';
         if (catalog != '') {
-            $.ajax({
-                type: 'post',
-                async: true,
-                data: JSON.stringify(data),
-                url: document.location.origin + '/api/addcatalog',
-                dataType:'json',
-                contentType: "application/json; charset=utf-8",
-                success: function(data) {
-                    Toast.fire({
-                        type: 'success',
-                        title: '已经添加'
-                    });
-                },
-                error: function (xhr) {
-                    Toast.fire({
-                        type: 'error',
-                        title: "Ajax 发生错误: " + xhr.responseText
-                    });
-                }
-            });
+            function success(data) {
+                Toast.fire({
+                  type: 'success',
+                  title: '已经添加'
+                });
+            }
+
+            function error(xhr) {
+                Toast.fire({
+                    type: 'error',
+                    title: "Ajax 发生错误: " + xhr.responseText
+                });
+            }
+
+            netPostJson(url, data, success, error);
         }
     }
 });
 
 function getCatalogData () {
     var data = {};
-
-    $.ajax({
-        type: 'post',
-        async: true,
-        data: JSON.stringify(data),
-        url: document.location.origin + '/api/getcatalog',
-        dataType:'json',
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            if(data && data.length) {
-                var tbody = $('#catalog-table-body');
-                for (var i = 0; i < data.length; ++i) {
-                    var c = data[i];
-                    if (!c.createTime) {
-                        c.createTime = '';
-                    }
-                    var s = '<tr><td>' + c.id + '</td><td>' + c.name + '</td><td>' + c.createTime + '</td></tr>';
-                    tbody.append(s);
+    var url = document.location.origin + '/api/getcatalog';
+    function success(data) {
+        if(data && data.length) {
+            var tbody = $('#catalog-table-body');
+            for (var i = 0; i < data.length; ++i) {
+                var c = data[i];
+                if (!c.createTime) {
+                    c.createTime = '';
                 }
-
-                attachDataTable();
+                var s = '<tr><td>' + c.id + '</td><td>' + c.name + '</td><td>' + c.createTime + '</td></tr>';
+                tbody.append(s);
             }
-        },
-        error: function (xhr) {
-            Toast.fire({
-                type: 'error',
-                title: "Ajax 发生错误: " + xhr.responseText
-            });
+
+            attachDataTable();
         }
-    });
+    }
+
+    function error(xhr) {
+        Toast.fire({
+            type: 'error',
+            title: "Ajax 发生错误: " + xhr.responseText
+        });
+    }
+
+    netPostJson(url, data, success, error);
 }
 
 function attachDataTable() {

@@ -4,6 +4,7 @@ import DefaultMain.Model.Article;
 import DefaultMain.Model.Tag;
 import DefaultMain.Service.ArticleService;
 import DefaultMain.Service.TagService;
+import DefaultMain.Utility.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,7 @@ public class ArticleApi {
                 Tag t = new Tag();
                 t.setId(null);
                 t.setName(name);
+                t.setCreateTime(Utility.getNowTime());
                 t = tagService.create(t);
                 article.getTagList().get(i).setId(t.getId());
             }

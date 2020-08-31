@@ -2,6 +2,7 @@ package DefaultMain.API;
 
 import DefaultMain.Model.Catalog;
 import DefaultMain.Service.CatalogService;
+import DefaultMain.Utility.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +27,7 @@ public class CatalogApi {
 
         if (!catalogService.exists(catalog)) {
             catalog.setId(null);
-            Date date = new Date();
-            SimpleDateFormat ft = new SimpleDateFormat("yyyyMMddHHMMss+08");
-            String time = ft.format(date);
+            String time = Utility.getNowTime();
             catalog.setCreateTime(time);
             catalog = catalogService.create(catalog);
         }

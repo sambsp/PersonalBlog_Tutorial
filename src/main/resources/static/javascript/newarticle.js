@@ -63,6 +63,7 @@ function saveArticle() {
     var catalog = $("#catlog-selection").val();
     var content = window.editor.getData();
     var id = $('#article-id').attr('value').trim();
+    var tagList = $('#tags-container').find('.token-autocomplete-token');
 
     if (title == null || title.trim() == '') {
         console.log("题目不能是空的");
@@ -79,7 +80,19 @@ function saveArticle() {
         return;
     }
 
-    var data = {'title': title, 'content': content, 'catalog': { 'id': catalog }, 'id': id}
+    if (tagList.length == 0) {
+        console.log("标签不能是空的");
+        return;
+    }
+
+    var tags = [];
+    for (var i = 0; i < tagList.length; ++i) {
+        var tag = {};
+        tag.name = tagList[i].getAttribute('data-text');
+        tags.push(tag);
+    }
+
+    var data = {'title': title, 'content': content, 'catalog': { 'id': catalog }, 'tagList': tags, 'id': id}
 
     $.ajax({
         type: 'post',
@@ -137,6 +150,17 @@ $(document).ready(function() {
 
     var tokenAutocomplete = new TokenAutocomplete({
         name: 'tags-container',
-        selector: '#tags-container'
+        selector: '#tags-container',
+        suggestionRenderer: function (suggestion) {
+            var option = document.createElement('li');
+            option.textContent = suggestion.text;
+            if (suggestion.description) {
+                var description = document.createElement('small');
+                description.textContent = suggestion.description;
+                description.classList.add('token-autocomplete-suggestion-description');
+                option.appendChild(description);
+            }
+            return option;
+        }
     });
 });

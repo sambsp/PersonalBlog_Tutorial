@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 public class Article {
     @Id
@@ -15,6 +16,8 @@ public class Article {
     private String content;
     @DBRef
     private Catalog catalog;
+    @DBRef
+    private List<Tag> tagList;
 
     public String getTitle() {
         return title;
@@ -46,5 +49,13 @@ public class Article {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Tag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
     }
 }

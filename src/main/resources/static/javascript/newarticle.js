@@ -134,4 +134,9 @@ $(document).ready(function() {
             });
         }
     });
+
+    var tokenAutocomplete = new TokenAutocomplete({
+        name: 'tags-container',
+        selector: '#tags-container'
+    });
 });

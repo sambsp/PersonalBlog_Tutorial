@@ -17,6 +17,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/js/fontawesome.js"></script>
 
     <link href="css/style.css" rel="stylesheet">
+    <link href="3rdParty/tokenautocomplete/token-autocomplete.css" rel="stylesheet">
 
     <style>
         .ck-editor__editable_inline {
@@ -56,6 +57,20 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <label>标签</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="tags-container"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -73,6 +88,7 @@
 
 <script src="3rdParty/ckeditor/ckeditor.js"></script>
 <script src="3rdParty/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="3rdParty/tokenautocomplete/token-autocomplete.js"></script>
 <script src="javascript/sidebartoggle.js"></script>
 <script src="javascript/newarticle.js"></script>
 

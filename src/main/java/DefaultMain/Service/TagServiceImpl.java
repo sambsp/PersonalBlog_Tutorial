@@ -20,7 +20,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Collection<Tag> read() {
-        return null;
+        return tagRepository.findAll();
     }
 
     @Override

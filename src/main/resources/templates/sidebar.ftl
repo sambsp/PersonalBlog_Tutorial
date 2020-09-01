@@ -17,7 +17,7 @@
                     <a href="/catalog">分类目录</a>
                 </li>
                 <li>
-                    <a href="#">标签</a>
+                    <a href="/tag">标签</a>
                 </li>
             </ul>
         </li>

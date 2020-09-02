@@ -1,6 +1,7 @@
 package DefaultMain.API;
 
 import DefaultMain.Model.Article;
+import DefaultMain.Model.ResponseMessage;
 import DefaultMain.Model.Tag;
 import DefaultMain.Service.ArticleService;
 import DefaultMain.Service.TagService;
@@ -26,6 +27,17 @@ public class ArticleApi {
 
     @PostMapping("/api/savearticle")
     public ResponseEntity<?> saveArticle(@Valid @RequestBody Article article) {
+        article.setPublished(false);
+        return writeArticle(article);
+    }
+
+    @PostMapping("/api/publisharticle")
+    public ResponseEntity<?> publishArticle(@Valid @RequestBody Article article) {
+        article.setPublished(true);
+        return writeArticle(article);
+    }
+
+    private ResponseEntity<?> writeArticle(Article article) {
         Article archive;
 
         for (int i = 0; i < article.getTagList().size(); ++i) {
@@ -55,17 +67,18 @@ public class ArticleApi {
             archive = articleService.update(article);
         }
 
+        ResponseMessage message = new ResponseMessage();
         if (archive == null) {
-            return ResponseEntity.badRequest().build();
+            message.setCode(-1);
+            message.setMessage("create or update article error.");
         }
         else {
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(archive.getTitle())
-                    .toUri();
-
-            return ResponseEntity.created(uri)
-                    .body(archive);
+            message.setCode(0);
+            message.setMessage("success");
+            message.setData(archive);
         }
+
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+        return ResponseEntity.created(uri).body(message);
     }
 }

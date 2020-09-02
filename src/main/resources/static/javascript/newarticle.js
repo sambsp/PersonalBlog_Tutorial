@@ -49,7 +49,7 @@ ClassicEditor.create( document.querySelector( '#article-editor' ), {
 				console.error( error );
 			} );
 
-function saveArticle() {
+function saveArticle(onlySave) {
     var title = $('#article-title').val();
     var catalog = $("#catlog-selection").val();
     var content = window.editor.getData();
@@ -84,15 +84,30 @@ function saveArticle() {
     }
 
     var data = {'title': title, 'content': content, 'catalog': { 'id': catalog }, 'tagList': tags, 'id': id};
-    var url = document.location.origin + '/api/savearticle';
-    netPostJson(url, data, function(data) {
-            Toast.fire({
-            	type: 'success',
-            	title: '保存成功'
-            });
+    var url = document.location.origin;
+    if (onlySave) {
+        url += '/api/savearticle';
+    }
+    else {
+        url += '/api/publisharticle';
+    }
 
-            if (id == "") {
-                $('#article-id').attr('value', data.id);
+    netPostJson(url, data, function(data) {
+            if (data.code === 0) {
+                Toast.fire({
+                    type: 'success',
+                    title: '成功'
+                });
+
+                if (id == "") {
+                    $('#article-id').attr('value', data.data.id);
+                }
+            }
+            else {
+                Toast.fire({
+                    type: 'error',
+                    title: data.message
+                });
             }
         }, function(xhr) {
             Toast.fire({

@@ -19,6 +19,8 @@ public class Article {
     @DBRef
     private List<Tag> tagList;
 
+    private boolean published;
+
     public String getTitle() {
         return title;
     }
@@ -57,5 +59,13 @@ public class Article {
 
     public void setTagList(List<Tag> tagList) {
         this.tagList = tagList;
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 }
